@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BookCat!{% endblock %}
+
+{% block body %}
+    {% for book in books %}
+    <a href="{{ path('book_show', {'slug': book.slug}) }}">{{ book.title }}</a>
+    {# <a href="#">{{ book.description }}</a><br><br> #}
+    {% endfor %}
+{% endblock %}
