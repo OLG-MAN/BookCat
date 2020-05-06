@@ -3,10 +3,10 @@
 {% block title %}BookCat!{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <a href="/books/add">Add book</a>
-    <a href="/">Main Page</a><br><br>
-
+<div class="container p-3">
+    <a href="/">Main Page</a><br>
+    <a href="/books/add">Add book</a><br><br>
+    
     {% for book in books %}
     <a href="{{ path('book_show', {'slug': book.slug}) }}">{{ book.title }}</a><br>
     {% endfor %}
