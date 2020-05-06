@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container p-3">
+<div class="container p-3 mx-auto bg-light text-dark" style="width:500px">
     {{ form_start(form) }}
         {{ form_row(form.author_id) }} <br>   
         {{ form_row(form.title) }} <br>
-        {{ form_row(form.description, { 'attr': {'rows' : '10','cols' : '10' }}) }}
-    <button class="btn btn-default" type="submit">Save</button>
+        {{ form_row(form.description, { 'attr': {'rows' : '10','cols' : '50' }}) }}
+    <button class="btn btn-default bg-primary text-white" type="submit">Save</button>
     {{ form_end(form) }}
 </div>
 {% endblock %}

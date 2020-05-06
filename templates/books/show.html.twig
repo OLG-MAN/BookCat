@@ -2,7 +2,7 @@
 
 {% block body %} 
 
-<div class="container p-3">
+<div class="container p-3 bg-light text-dark">
     <p>{{ book.title}}</p>
     <p>{{ book.description}}</p>
     <a href="{{ path('book_edit', {'slug': book.slug}) }}">Edit Book</a><br>

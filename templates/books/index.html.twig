@@ -3,12 +3,18 @@
 {% block title %}BookCat!{% endblock %}
 
 {% block body %}
-<div class="container p-3">
+<div class="container p-3 bg-light text-dark">
     <a href="/">Main Page</a><br>
     <a href="/books/add">Add book</a><br><br>
+    <form class="form-inline my-2 my-lg-0" action="{{ path('book_search') }}" method="get">
+        <input class="form-control mr-sm-2" type="search" aria-label="Search" name="q">
+        <button class="btn btn-default bg-primary text-white my-2 my-sm-0" type="submit">Search some books</button>
+    </form><br>
     
     {% for book in books %}
     <a href="{{ path('book_show', {'slug': book.slug}) }}">{{ book.title }}</a><br>
     {% endfor %}
 </div>
+
+
 {% endblock %}

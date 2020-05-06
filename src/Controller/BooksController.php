@@ -24,6 +24,19 @@ class BooksController extends AbstractController
     }
 
     /**
+     * @Route("/books/search", name="book_search")
+     */
+    public function search(Request $request)
+    {
+        $query = $request->query->get('q');
+        $books = $this->bookRepository->searchByQuery($query);
+
+        return $this->render('books/query.html.twig', [
+            'books' => $books
+        ]);
+    }
+
+    /**
      * @Route("/books/add", name="book_add")
      */
     public function addBook(Request $request, Slugify $slugify)
