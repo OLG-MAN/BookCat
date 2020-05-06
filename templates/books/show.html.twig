@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <p>{{ book.description }}</p>
+{% block body %} 
+
+<div class="example-wrapper">
+    <p>{{ book.title}}</p>
+    <p>{{ book.description}}</p>
+    <a href="{{ path('book_edit', {'slug': book.slug}) }}">Edit Book</a>
+    <a href="{{ path('book_delete', {'slug': book.slug}) }}">Delete Book</a>
+    <a href="/books">Books</a>
+    <a href="/">Main Page</a>
+</div>
+
 {% endblock %}
