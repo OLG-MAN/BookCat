@@ -4,11 +4,13 @@ namespace App\Form;
 
 use App\Entity\Book;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\File;
 
 class BookType extends AbstractType
 {
@@ -18,6 +20,22 @@ class BookType extends AbstractType
             ->add('author_id', IntegerType::class, ['label' => ''])
             ->add('title', TextType::class, ['label' => ''])
             ->add('description', TextareaType::class, ['label' => ''])
+            ->add('image', FileType::class, [
+                'label' => '',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload image',
+                    ])
+                ],
+            ])
+ 
         ;
     }
 

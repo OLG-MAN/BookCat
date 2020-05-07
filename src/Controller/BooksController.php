@@ -8,6 +8,7 @@ use App\Entity\Book;
 use App\Form\BookType;
 use App\Repository\BookRepository;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 // use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,6 +49,25 @@ class BooksController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $book->setSlug($slugify->slugify($book->getTitle()));
             $book->setCreatedAt(new \DateTime());
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $slugify->slugify($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $book->setImage($newFilename);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
@@ -70,6 +90,26 @@ class BooksController extends AbstractController
 
          if ($form->isSubmitted() && $form->isValid()) {
             $book->setSlug($slugify->slugify($book->getTitle()));
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $slugify->slugify($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $book->setImage($newFilename);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 

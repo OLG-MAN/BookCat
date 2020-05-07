@@ -11,10 +11,13 @@
         <input class="form-control mr-sm-2" type="search" aria-label="Search" name="q">
         <button class="btn btn-default bg-primary text-white my-2 my-sm-0" type="submit">Search some books</button>
     </form><br>
-    
+
     {% for book in books %}
     <a href="{{ path('book_show', {'slug': book.slug}) }}">{{ book.title }}</a><br>
+    {# <a href="{{ path('book_show', {'slug': book.slug}) }}"><img src="{{ book.image }}" alt="Example"/></a> #}
+    <a href="{{ path('book_show', {'slug': book.slug}) }}"><img src="{{ asset('uploads/' ~ book.image) }}" alt="Example"/></a><br>  
     {% endfor %}
+
 </div>
 
 {% endblock %}

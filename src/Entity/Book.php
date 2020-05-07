@@ -25,18 +25,19 @@ class Book
 
     /**
      * @ORM\Column(type="string", nullable=false)
-     * @Assert\Length(min=10, max=255)
+     * @Assert\Length(min=3, max=255)
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", nullable=false)
-     * @Assert\Length(min=10, max=255)
+     * @Assert\Length(min=3, max=255)
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", nullable=false)
+     * @Assert\Length(min=3, max=255)
      */
     private $slug;
 
@@ -44,6 +45,23 @@ class Book
      * @ORM\Column(type="datetime")
      */
     private $created_at;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {

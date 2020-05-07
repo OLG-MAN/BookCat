@@ -32,11 +32,12 @@ class AppFixtures extends Fixture
     {
         for ($i = 1; $i < 20; $i++) {
             $post = new Book();
-            $post->setAuthorId($this->faker->unique->numberBetween(1, 20));
+            $post->setAuthorId($this->faker->unique->numberBetween(110, 130));
             $post->setTitle($this->faker->text(12));
             $post->setDescription($this->faker->text(20));
             $post->setSlug($this->slug->slugify($post->getTitle()));
             $post->setCreatedAt($this->faker->dateTime);
+            $post->setImage($this->url="https://picsum.photos/140/210");
 
             $manager->persist($post);
         }
