@@ -3,6 +3,7 @@
 {% block title %}BookCat!{% endblock %}
 
 {% block body %}
+
 <div class="container p-3 bg-light text-dark">
     <a href="/">Main Page</a><br>
     <a href="/books/add">Add book</a><br><br>
@@ -15,6 +16,5 @@
     <a href="{{ path('book_show', {'slug': book.slug}) }}">{{ book.title }}</a><br>
     {% endfor %}
 </div>
-
 
 {% endblock %}

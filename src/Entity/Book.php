@@ -19,7 +19,7 @@ class Book
 
     /**
      * @ORM\Column(type="integer", nullable=false)
-     * @Assert\Length(min=1, max=255)
+     * @Assert\Length(min=1, max=3)
      */
     private $author_id;
 

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Results{% endblock %}
+
+{% block body %}
+
+    {% for author in authors %}
+       <div class="media text-muted pt-3">
+         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+           <a href="{{ path('author_show', {slug: author.slug}) }}">{{ author.secondName }}</a>
+              {{ author.firstName }} {{ author.secondName }}
+         </p>
+       </div>
+    {% endfor %}
+    
+    <a href="{{ path('default') }}">Main Page</a>
+    
+{% endblock %}

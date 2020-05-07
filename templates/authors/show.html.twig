@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %} 
+
+<div class="container p-3 bg-light text-dark">
+    <p>{{ author.firstName }}</p>
+    <p>{{ author.secondName }}</p>
+    <a href="{{ path('author_edit', {'slug': author.slug}) }}">Edit Author</a><br>
+    <a href="{{ path('author_delete', {'slug': author.slug}) }}">Delete Author</a><br>
+    <a href="/authors">Authors</a><br>
+    <a href="/">Main Page</a><br>
+</div>
+
+{% endblock %}

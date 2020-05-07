@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container p-3 mx-auto bg-light text-dark" style="width:500px">
+    {{ form_start(form) }}
+        {{ form_row(form.firstName) }} <br>   
+        {{ form_row(form.secondName) }} <br>
+    <button class="btn btn-default bg-primary text-white" type="submit">Save</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

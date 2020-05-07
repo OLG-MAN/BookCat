@@ -93,7 +93,7 @@ class BooksController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('books');
-    }
+    }  
 
     /**
      * @Route("/books/{slug}", name="book_show")
@@ -105,7 +105,7 @@ class BooksController extends AbstractController
         ]);
     }
 
-    /**
+        /**
      * @Route("/books", name="books")
      */
     public function books()
@@ -115,5 +115,5 @@ class BooksController extends AbstractController
         return $this->render('books/index.html.twig', [
            'books' => $books
         ]);
-    }    
+    }  
 }
